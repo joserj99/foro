@@ -24,7 +24,7 @@ public class UsuarioController {
 	
 	@GetMapping(path = {"/usuario/validar", "/"})
 	public String validar() {
-		return "/usuario/validar";
+		return "usuario/validar";
 	}
 	
 	@PostMapping("/usuario/validar")
@@ -37,7 +37,7 @@ public class UsuarioController {
 	@GetMapping("/usuario/agregar")
 	public String agregar(Model model) {
 		model.addAttribute("usuario", new Usuario());
-		return "/usuario/agregar";
+		return "usuario/agregar";
 	}
 	
 	@PostMapping("/usuario/agregar")
@@ -47,7 +47,7 @@ public class UsuarioController {
 			return "redirect:/temas/listar";
 		}
 		modelo.addAttribute("error", servicioUsuario.getMensaje());
-		return "/usuario/agregar";
+		return "usuario/agregar";
 	}
 	
 	@GetMapping("/usuario/salir")
