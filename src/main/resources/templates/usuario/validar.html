@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<script src="/js/jquery-3.6.0.min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="jumbotron text-center">
+        <h1>Bienvenido al foro de desarrollo web</h1>
+        <p>Necesitas identificarte</p>
+    </div>
+    <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    	<p class="text-danger">Proporciona los datos de tu cuenta para acceder al sitio</p>
+    
+    	<div th:if="${param.error != null and session['SPRING_SECURITY_LAST_EXCEPTION'] != null}"
+    		class="alert alert-warning alert-dismissible fade show"
+    		role="alert">
+    		<button type="button" class="close" data-dismiss="alert">&times;</button>
+    		<h4 th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"></h4>
+    	</div>
+    	
+        <form action="#" th:action="@{/usuario/validar}" method="post">
+        	<label>Correo electronico: </label>
+        	<input type="email" required="required" name="username" class="form-control"/>
+        	<label>Clave de acceso: </label>
+        	<input type="password" required="required" name="password" class="form-control"/>
+        	
+        	<p>
+        		<input type="submit" value="Validar"/>
+        		<input type="reset" value="Limpiar"/>
+        	</p>
+        </form>
+        <div class="form-group">
+        	<div class="form-group">
+        		<a th:href="@{/usuario/agregar}">No tengo una cuenta, registrarme...</a>
+        	</div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+    
+</body>
+</html>
